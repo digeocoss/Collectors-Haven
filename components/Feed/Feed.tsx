@@ -4,16 +4,17 @@ import { styles } from "./FeedStyles";
 // import data
 import { CollectibleData } from "../../Data/FakeCollections";
 import { FilterButtons } from "../../constants/FilterButtonData";
+import { RootTabScreenProps } from "../../types";
 
 // Each collections picture
-const renderItem = (item) => (
-  <View key={item.id} style={styles.item}>
+const renderItem = (item: any) => (
+  <View key={item.id}>
     <Image style={styles.imageitem} source={item.img} />
   </View>
 );
 
 // Filter Buttons
-const renderButtons = (item) => (
+const renderButtons = (item: any) => (
   <View key={item.id}>
     <Pressable style={styles.sortCat}>
       <Text style={styles.sortCatText}>{item.title}</Text>
@@ -21,7 +22,7 @@ const renderButtons = (item) => (
   </View>
 );
 
-const App = () => {
+const App = ({ navigation }: RootTabScreenProps<"Feed">) => {
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={styles.collectionsContainer}>

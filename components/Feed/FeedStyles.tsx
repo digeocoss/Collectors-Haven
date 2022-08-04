@@ -24,32 +24,36 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 25,
-    color: "Black",
-    backgroundColor: "#81C8E7",
-     textAlign: "center"
+    color: "white",
+    fontWeight: "bold",
+    marginBottom: 15,
   },
-  itemselector: {
-    backgroundColor: "grey",
-    padding: "10%",
+  sortContainer: {
+    paddingBottom: 15,
   },
-   tradeImage: {
-      width: "100%",
-      hight: 200
-    },
-    imageItem: {
-        width: "50%",
-        height: 100,
-    },
-  container: {
-    flex: 1,
-    backgroundColor: "#084F6D"
-    //marginTop: StatusBar.currentHeight || 0,
+  mangaContainer: {
+    paddingBottom: 15,
   },
-  item: {
+  actionFiguresContainer: {
+    paddingBottom: 15,
+    marginBottom: "20%",
+  },
+  headSort: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "white",
+    marginBottom: 15,
+  },
+  sortCat: {
     backgroundColor: "white",
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
+    borderWidth: 1,
+    borderColor: "Black",
+    textAlign: "center",
+    borderRadius: 30,
+    // textAlign: "center",
+    paddingRight: 10,
+    paddingLeft: 10,
+    margin: 5,
   },
   sortCatText: {
     fontSize: 20,
