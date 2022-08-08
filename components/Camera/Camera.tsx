@@ -8,6 +8,7 @@ import {
   SafeAreaView,
   ImageBackgroundComponent,
   Image,
+  Dimensions
 } from "react-native";
 import { useState, useRef, useEffect, SetStateAction } from "react";
 import { shareAsync } from "expo-sharing";
@@ -16,6 +17,8 @@ import { TouchableOpacity } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { RootTabScreenProps } from "../../types";
+
+const { width: winWidth, height: winHeight } = Dimensions.get('window');
 
 export default function CameraUse({ navigation }: RootTabScreenProps<'Camera'>) {
   let cameraRef = useRef();
@@ -65,18 +68,11 @@ export default function CameraUse({ navigation }: RootTabScreenProps<'Camera'>) 
 
     return (
       <SafeAreaView style={styles.container}>
-
         <View style={{
-          // marginTop: 50,
+          position: 'absolute',
           flexDirection: 'row',
           padding: "4%",
           backgroundColor: "rgba(0, 0, 0, 0.8)",
-          // position: 'absolute',
-          zIndex: 1,
-          marginTop: 200,
-          height: 120,
-          // display: 'flex',
-          // justifyContent: 'flex-start',
         }}>
 
           <TouchableOpacity
@@ -96,7 +92,7 @@ export default function CameraUse({ navigation }: RootTabScreenProps<'Camera'>) 
             activeOpacity={0.5}
             onPress={TakePicture}
           >
-            <Ionicons name="md-camera-reverse-outline" size={75} color="white" />
+            <Ionicons name="md-camera-reverse-outline" size={55} color="white" />
           </TouchableOpacity>
           
           <TouchableOpacity
@@ -110,15 +106,12 @@ export default function CameraUse({ navigation }: RootTabScreenProps<'Camera'>) 
         </View>
 
         <Image
-        height={1}
           style={styles.preview}
           source={{ uri: "data:image/jpg;base64," + photo.base64 }}
         />
-       
 
-        <View style={{backgroundColor: "rgba(0, 0, 0, 0.8)", flexDirection: 'row', zIndex: 1, bottom: 180, width: 400, height: 150}}>
-         
-          <TouchableOpacity
+        <View style={styles.bottomToolbar}>
+        <TouchableOpacity
             style={{alignSelf: 'center', marginLeft: 150, }}
             activeOpacity={0.5}
             onPress={TakePicture}
@@ -126,14 +119,10 @@ export default function CameraUse({ navigation }: RootTabScreenProps<'Camera'>) 
             <Entypo name="circle" size={100} color="white" />
    
           </TouchableOpacity>
-
-          {AllowMedia ? <Text style = {{color: 'white', backgroundColor: 'red', alignSelf: 'center', marginLeft: 'auto', marginRight: 60, fontSize: 21, }}onPress={() => console.log('create route where this should go')}> Post </Text>: undefined}
+          { AllowMedia ? <Text style = {styles.postButton} onPress={() => console.log('create route where this should go')}> Post </Text>: undefined}
         </View>
-
-        
-
       </SafeAreaView>
-    );
+    )
   }
 
   return (
@@ -157,7 +146,7 @@ export default function CameraUse({ navigation }: RootTabScreenProps<'Camera'>) 
           activeOpacity={0.5}
           onPress={TakePicture}
         >
-          <Ionicons name="md-camera-reverse-outline" size={75} color="white" />
+          <Ionicons name="md-camera-reverse-outline" size={55} color="white" />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.swichCam}
@@ -197,11 +186,13 @@ const styles = StyleSheet.create({
     color: "red",
   },
   preview: {
-    // position: 'absolute',
-    alignSelf: "stretch",
-    height: '100%',
-    width: '100%'
-    // flex: 1,
+    height: winHeight,
+    width: winWidth,
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    right: 0,
+    bottom: 0,
   },
   TextStyle: {
     color: "white",
@@ -247,4 +238,21 @@ const styles = StyleSheet.create({
     marginTop: 'auto'
 
   },
+  bottomToolbar: {
+    backgroundColor: "rgba(0, 0, 0, 0.8)", 
+    flexDirection: 'row', 
+    width: winWidth,
+    position: 'absolute',
+    height: 100,
+    bottom: 0, 
+    paddingBottom: -20
+  },
+  postButton: {
+    color: 'white', 
+    backgroundColor: 'red', 
+    alignSelf: 'center', 
+    marginLeft: 'auto', 
+    marginRight: 60, 
+    fontSize: 21
+  }
 });

@@ -31,6 +31,7 @@ export type RootTabParamList = {
   Camera: undefined;
   Feed: undefined;
   Profile: undefined;
+  SinglePage: undefined;
 };
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> =
