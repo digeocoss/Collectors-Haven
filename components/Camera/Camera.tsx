@@ -8,7 +8,7 @@ import {
   SafeAreaView,
   ImageBackgroundComponent,
   Image,
-  Dimensions
+  Dimensions,
 } from "react-native";
 import { useState, useRef, useEffect, SetStateAction } from "react";
 import { shareAsync } from "expo-sharing";
@@ -18,9 +18,11 @@ import { Entypo } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { RootTabScreenProps } from "../../types";
 
-const { width: winWidth, height: winHeight } = Dimensions.get('window');
+const { width: winWidth, height: winHeight } = Dimensions.get("window");
 
-export default function CameraUse({ navigation }: RootTabScreenProps<'Camera'>) {
+export default function CameraUse({
+  navigation,
+}: RootTabScreenProps<"Camera">) {
   let cameraRef = useRef();
   const [AllowCamera, setAllowCamera] = useState();
   const [AllowMedia, setAllowMedia] = useState();
@@ -52,7 +54,6 @@ export default function CameraUse({ navigation }: RootTabScreenProps<'Camera'>) 
     setPhoto(newPhoto);
   };
 
-
   if (photo) {
     let sharePicture = () => {
       shareAsync(photo.uri).then(() => {
@@ -68,23 +69,27 @@ export default function CameraUse({ navigation }: RootTabScreenProps<'Camera'>) 
 
     return (
       <SafeAreaView style={styles.container}>
-        <View style={{
-          position: 'absolute',
-          flexDirection: 'row',
-          padding: "4%",
-          backgroundColor: "rgba(0, 0, 0, 0.8)",
-        }}>
-
+        <View
+          style={{
+            position: "absolute",
+            flexDirection: "row",
+            padding: "4%",
+            backgroundColor: "rgba(0, 0, 0, 0.8)",
+          }}
+        >
           <TouchableOpacity
-            style={[{ marginTop: 'auto', marginRight: 211 }]}
+            style={[{ marginTop: "auto", marginRight: 211 }]}
             activeOpacity={0.5}
             onPress={() => {
               setPhoto(undefined);
-              navigation.navigate('Feed');
+              navigation.navigate("Feed");
             }}
           >
             {/* <Ionicons name="flash-outline" size={50} color="white" /> */}
-            <Text style={{ color: 'white', fontSize: 21, marginTop: 'auto' }}> Cancel </Text>
+            <Text style={{ color: "white", fontSize: 21, marginTop: "auto" }}>
+              {" "}
+              Cancel{" "}
+            </Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -92,15 +97,18 @@ export default function CameraUse({ navigation }: RootTabScreenProps<'Camera'>) 
             activeOpacity={0.5}
             onPress={TakePicture}
           >
-            <Ionicons name="md-camera-reverse-outline" size={55} color="white" />
+            <Ionicons
+              name="md-camera-reverse-outline"
+              size={55}
+              color="white"
+            />
           </TouchableOpacity>
-          
+
           <TouchableOpacity
             style={styles.swichCam}
             activeOpacity={0.5}
             onPress={TakePicture}
           >
-
             <Ionicons name="flash-off-outline" size={50} color="white" />
           </TouchableOpacity>
         </View>
@@ -111,34 +119,40 @@ export default function CameraUse({ navigation }: RootTabScreenProps<'Camera'>) 
         />
 
         <View style={styles.bottomToolbar}>
-        <TouchableOpacity
-            style={{alignSelf: 'center', marginLeft: 150, }}
+          <TouchableOpacity
+            style={{ alignSelf: "center", marginLeft: 150 }}
             activeOpacity={0.5}
             onPress={TakePicture}
           >
             <Entypo name="circle" size={100} color="white" />
-   
           </TouchableOpacity>
-          { AllowMedia ? <Text style = {styles.postButton} onPress={() => console.log('create route where this should go')}> Post </Text>: undefined}
+          {AllowMedia ? (
+            <Text
+              style={styles.postButton}
+              onPress={() => console.log("create route where this should go")}
+            >
+              {" "}
+              Post{" "}
+            </Text>
+          ) : undefined}
         </View>
       </SafeAreaView>
-    )
+    );
   }
 
   return (
     <Camera style={styles.container} ref={cameraRef}>
-      <View style={styles.topSet}>
-
+      <View style={styles.topToolbar}>
         <TouchableOpacity
           style={styles.cancel}
           activeOpacity={0.5}
           onPress={() => {
             setPhoto(undefined);
-            navigation.navigate('Feed')
+            navigation.navigate("Feed");
           }}
         >
           {/* <Ionicons name="flash-outline" size={50} color="white" /> */}
-          <Text style={{ color: 'white', fontSize: 21 }}> Cancel </Text>
+          <Text style={{ color: "white", fontSize: 21 }}> Cancel </Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -153,21 +167,19 @@ export default function CameraUse({ navigation }: RootTabScreenProps<'Camera'>) 
           activeOpacity={0.5}
           onPress={TakePicture}
         >
-
           <Ionicons name="flash-off-outline" size={50} color="white" />
         </TouchableOpacity>
       </View>
       <View style={styles.SeparatorLine} />
 
-      <View style={styles.bottomSet}>
-        {/* <Button color="green" title="Take picture" onPress={TakePicture}/> */}
+      <View style={styles.bottomToolbar}>
         <TouchableOpacity
-          style={styles.circleBut}
+          style={styles.circleButton}
           activeOpacity={0.5}
           onPress={TakePicture}
         >
           <Entypo name="circle" size={100} color="white" />
-          <View style={styles.SeparatorLine} />
+          {/* <View style={styles.SeparatorLine} /> */}
         </TouchableOpacity>
       </View>
     </Camera>
@@ -177,8 +189,6 @@ export default function CameraUse({ navigation }: RootTabScreenProps<'Camera'>) 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
   },
   buttonContainer: {
     BackgroundColor: "#fff",
@@ -188,7 +198,7 @@ const styles = StyleSheet.create({
   preview: {
     height: winHeight,
     width: winWidth,
-    position: 'absolute',
+    position: "absolute",
     left: 0,
     top: 0,
     right: 0,
@@ -197,11 +207,8 @@ const styles = StyleSheet.create({
   TextStyle: {
     color: "white",
   },
-  circleBut: {
-    // position: "absolute",
-    marginTop: 0,
-    marginBottom: 0,
-    alignSelf: "center",
+  circleButton: {
+    textAlign: "center",
   },
   topSet: {
     padding: "4%",
@@ -212,47 +219,44 @@ const styles = StyleSheet.create({
     //  marginTop: 150,
     flexDirection: "row",
   },
-  bottomSet: {
-    padding: "4%",
-    backgroundColor: "rgba(0, 0, 0, 0.8)",
-    width: 400,
-    height: 150,
-    marginTop: 20
-
-  },
   cancel: {
-    marginTop: 'auto',
+    marginTop: "auto",
     // marginLeft:'auto'
     // marginRight: 10,
   },
   swichCam: {
     marginLeft: 35,
     // backgroundColor: 'red',
-    marginTop: 'auto'
+    marginTop: "auto",
 
     // marginRight: 30
   },
   antiFlash: {
-    marginLeft: 'auto',
+    marginLeft: "auto",
     // backgroundColor: 'red',
-    marginTop: 'auto'
-
+    marginTop: "auto",
+  },
+  topToolbar: {
+    backgroundColor: "rgba(0, 0, 0, 0.8)",
+    top: 0,
+    width: winWidth,
   },
   bottomToolbar: {
-    backgroundColor: "rgba(0, 0, 0, 0.8)", 
-    flexDirection: 'row', 
+    backgroundColor: "rgba(0, 0, 0, 0.8)",
+    flexDirection: "row",
+    justifyContent: "center",
     width: winWidth,
-    position: 'absolute',
-    height: 100,
-    bottom: 0, 
-    paddingBottom: -20
+    position: "absolute",
+    bottom: 0,
+    padding: 20,
+    paddingBottom: 40,
   },
   postButton: {
-    color: 'white', 
-    backgroundColor: 'red', 
-    alignSelf: 'center', 
-    marginLeft: 'auto', 
-    marginRight: 60, 
-    fontSize: 21
-  }
+    color: "white",
+    backgroundColor: "red",
+    alignSelf: "center",
+    marginLeft: "auto",
+    marginRight: 60,
+    fontSize: 21,
+  },
 });
