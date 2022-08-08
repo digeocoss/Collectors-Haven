@@ -48,6 +48,8 @@ export default function CameraUse({ navigation }: RootTabScreenProps<'Camera'>) 
     let newPhoto = await cameraRef.current.takePictureAsync(options);
     setPhoto(newPhoto);
   };
+
+
   if (photo) {
     let sharePicture = () => {
       shareAsync(photo.uri).then(() => {
@@ -63,13 +65,73 @@ export default function CameraUse({ navigation }: RootTabScreenProps<'Camera'>) 
 
     return (
       <SafeAreaView style={styles.container}>
+
+        <View style={{
+          // marginTop: 50,
+          flexDirection: 'row',
+          padding: "4%",
+          backgroundColor: "rgba(0, 0, 0, 0.8)",
+          // position: 'absolute',
+          zIndex: 1,
+          marginTop: 200,
+          height: 120,
+          // display: 'flex',
+          // justifyContent: 'flex-start',
+        }}>
+
+          <TouchableOpacity
+            style={[{ marginTop: 'auto', marginRight: 211 }]}
+            activeOpacity={0.5}
+            onPress={() => {
+              setPhoto(undefined);
+              navigation.navigate('Feed');
+            }}
+          >
+            {/* <Ionicons name="flash-outline" size={50} color="white" /> */}
+            <Text style={{ color: 'white', fontSize: 21, marginTop: 'auto' }}> Cancel </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.antiFlash}
+            activeOpacity={0.5}
+            onPress={TakePicture}
+          >
+            <Ionicons name="md-camera-reverse-outline" size={75} color="white" />
+          </TouchableOpacity>
+          
+          <TouchableOpacity
+            style={styles.swichCam}
+            activeOpacity={0.5}
+            onPress={TakePicture}
+          >
+
+            <Ionicons name="flash-off-outline" size={50} color="white" />
+          </TouchableOpacity>
+        </View>
+
         <Image
+        height={1}
           style={styles.preview}
           source={{ uri: "data:image/jpg;base64," + photo.base64 }}
         />
-        <Button title="share" onPress={sharePicture} />
-        {AllowMedia ? <Button title="save" onPress={savePhoto} /> : undefined}
-        <Button title="discard" onPress={() => setPhoto(undefined)} />
+       
+
+        <View style={{backgroundColor: "rgba(0, 0, 0, 0.8)", flexDirection: 'row', zIndex: 1, bottom: 180, width: 400, height: 150}}>
+         
+          <TouchableOpacity
+            style={{alignSelf: 'center', marginLeft: 150, }}
+            activeOpacity={0.5}
+            onPress={TakePicture}
+          >
+            <Entypo name="circle" size={100} color="white" />
+   
+          </TouchableOpacity>
+
+          {AllowMedia ? <Text style = {{color: 'white', backgroundColor: 'red', alignSelf: 'center', marginLeft: 'auto', marginRight: 60, fontSize: 21, }}onPress={() => console.log('create route where this should go')}> Post </Text>: undefined}
+        </View>
+
+        
+
       </SafeAreaView>
     );
   }
@@ -77,31 +139,38 @@ export default function CameraUse({ navigation }: RootTabScreenProps<'Camera'>) 
   return (
     <Camera style={styles.container} ref={cameraRef}>
       <View style={styles.topSet}>
+
         <TouchableOpacity
-          style={styles.flash}
+          style={styles.cancel}
           activeOpacity={0.5}
-          onPress={TakePicture}
+          onPress={() => {
+            setPhoto(undefined);
+            navigation.navigate('Feed')
+          }}
         >
-          <Ionicons name="flash-outline" size={50} color="white" />
+          {/* <Ionicons name="flash-outline" size={50} color="white" /> */}
+          <Text style={{ color: 'white', fontSize: 21 }}> Cancel </Text>
         </TouchableOpacity>
+
         <TouchableOpacity
           style={styles.antiFlash}
           activeOpacity={0.5}
           onPress={TakePicture}
         >
-          <Ionicons name="flash-off-outline" size={50} color="white" />
+          <Ionicons name="md-camera-reverse-outline" size={75} color="white" />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.swichCam}
           activeOpacity={0.5}
           onPress={TakePicture}
         >
-          <Ionicons name="md-camera-reverse-outline" size={75} color="white" />
+
+          <Ionicons name="flash-off-outline" size={50} color="white" />
         </TouchableOpacity>
       </View>
       <View style={styles.SeparatorLine} />
 
-      <View style={styles.buttonContainer}>
+      <View style={styles.bottomSet}>
         {/* <Button color="green" title="Take picture" onPress={TakePicture}/> */}
         <TouchableOpacity
           style={styles.circleBut}
@@ -128,8 +197,11 @@ const styles = StyleSheet.create({
     color: "red",
   },
   preview: {
+    // position: 'absolute',
     alignSelf: "stretch",
-    flex: 1,
+    height: '100%',
+    width: '100%'
+    // flex: 1,
   },
   TextStyle: {
     color: "white",
@@ -142,20 +214,37 @@ const styles = StyleSheet.create({
   },
   topSet: {
     padding: "4%",
-    backgroundColor: "#084F6D",
+    backgroundColor: "rgba(0, 0, 0, 0.8)",
     width: 400,
     height: 120,
     marginBottom: 525,
     //  marginTop: 150,
     flexDirection: "row",
   },
-  flash: {
-    marginRight: 10,
+  bottomSet: {
+    padding: "4%",
+    backgroundColor: "rgba(0, 0, 0, 0.8)",
+    width: 400,
+    height: 150,
+    marginTop: 20
+
   },
-  antiFlash: {
-    // marginRight: 30
+  cancel: {
+    marginTop: 'auto',
+    // marginLeft:'auto'
+    // marginRight: 10,
   },
   swichCam: {
     marginLeft: 35,
+    // backgroundColor: 'red',
+    marginTop: 'auto'
+
+    // marginRight: 30
+  },
+  antiFlash: {
+    marginLeft: 'auto',
+    // backgroundColor: 'red',
+    marginTop: 'auto'
+
   },
 });

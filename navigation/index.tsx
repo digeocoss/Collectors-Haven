@@ -53,7 +53,9 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      initialRouteName="Root"
+    >
       <Stack.Screen
         name="Root"
         component={BottomTabNavigator}
@@ -77,6 +79,19 @@ function RootNavigator() {
  */
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
+const getTabBarVisibility = (route : any) => {
+  const routeName = route.state
+    ? route.state.routes[route.state.index].name
+    : '';
+
+  if (routeName === 'Camera') {
+    return false;
+  }
+
+  return true;
+}
+
+
 function BottomTabNavigator() {
   const colorScheme = useColorScheme();
 
@@ -86,6 +101,7 @@ function BottomTabNavigator() {
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
       }}
+
     >
       <BottomTab.Screen
         name="Camera"
@@ -94,6 +110,8 @@ function BottomTabNavigator() {
           title: "Camera",
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
           header: () => null,
+          tabBarStyle: {display: 'none'}
+
         })}
       />
       <BottomTab.Screen
