@@ -30,6 +30,11 @@ const linking: LinkingOptions<RootStackParamList> = {
               Profile: "Profile",
             },
           },
+          SinglePage: {
+            screens: {
+              SinglePage: "SinglePage",
+            },
+          },
         },
       },
       Modal: "modal",

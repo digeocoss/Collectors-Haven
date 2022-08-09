@@ -1,5 +1,5 @@
 import { View, Text, Pressable, Image, FlatList } from "react-native";
-import { styles } from "./SinglePageStyle.js";
+import { styles } from "./SinglePageStyle.tsx";
 import { ExampleProfile } from "../../Data/Profile_Data";
 import BottomSheet from "@gorhom/bottom-sheet";
 import { useRef, useMemo, useCallback } from "react";
@@ -34,7 +34,7 @@ export default function SinglePage() {
           height: 170,
           borderStyle: "solid",
           borderColor: "red",
-          margin: 10
+          margin: 10,
         }}
       >
         <Image source={item.img} />
@@ -49,7 +49,7 @@ export default function SinglePage() {
       snapPoints={snapPoints}
       onChange={handleSheetChanges}
       handleStyle={{ display: "none" }}
-      backgroundStyle={{ backgroundColor: "white", top: 20}}
+      backgroundStyle={{ backgroundColor: "white", top: 20 }}
       enablePanDownToClose
     >
       <View style={styles.tradeHeader}>
@@ -66,7 +66,7 @@ export default function SinglePage() {
           />
           <Pressable style={styles.offerButton} onPress={() => close()}>
             <Text style={styles.offerButtonText}>Offer </Text>
-        </Pressable>
+          </Pressable>
         </View>
       </View>
     </BottomSheet>
@@ -109,14 +109,16 @@ export default function SinglePage() {
       </View>
       <View style={styles.space}>
         <Pressable style={styles.tradeBut} onPress={() => open()}>
-          <Text style={{ fontSize: 30 }}>     Trade    </Text>
+          <Text style={{ fontSize: 30 }}> Trade </Text>
         </Pressable>
         <Pressable style={styles.tradeBut} onPress={() => open()}>
-          <Text style={{ fontSize: 30 }}>      Buy      </Text>
+          <Text style={{ fontSize: 30 }}> Buy </Text>
         </Pressable>
       </View>
       <Pressable style={styles.buyTradeBut} onPress={() => open()}>
-        <Text style={{ fontSize: 30, marginLeft: 5, marginRight:2, }}>Trade & Buy</Text>
+        <Text style={{ fontSize: 30, marginLeft: 5, marginRight: 2 }}>
+          Trade & Buy
+        </Text>
       </Pressable>
 
       {bottomSheet()}

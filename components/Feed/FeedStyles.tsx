@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   },
   actionFiguresContainer: {
     paddingBottom: 15,
-    marginBottom: "20%",
+    marginBottom: "45%",
   },
   headSort: {
     fontSize: 20,
@@ -44,19 +44,8 @@ const styles = StyleSheet.create({
     color: "white",
     marginBottom: 15,
   },
-  sortCat: {
-    backgroundColor: "white",
-    borderWidth: 1,
-    borderColor: "Black",
-    textAlign: "center",
-    borderRadius: 30,
-    // textAlign: "center",
-    paddingRight: 10,
-    paddingLeft: 10,
-    margin: 5,
-  },
+  sortCat: {},
   sortCatText: {
-    fontSize: 20,
     padding: 5,
   },
 });

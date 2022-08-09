@@ -17,20 +17,26 @@ import CameraUse from "../components/Camera/Camera";
 import App from "../components/Feed/Feed";
 import Profile from "../components/Profile/Profile";
 
-import Colors from '../constants/Colors';
-import useColorScheme from '../hooks/useColorScheme';
-import ModalScreen from '../screens/ModalScreen';
-import NotFoundScreen from '../screens/NotFoundScreen';
-import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
-import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
-import LinkingConfiguration from './LinkingConfiguration';
-import { Ionicons } from '@expo/vector-icons';
-import { FontAwesome5 } from '@expo/vector-icons';  
+import Colors from "../constants/Colors";
+import useColorScheme from "../hooks/useColorScheme";
+import ModalScreen from "../screens/ModalScreen";
+import NotFoundScreen from "../screens/NotFoundScreen";
+import TabOneScreen from "../screens/TabOneScreen";
+import TabTwoScreen from "../screens/TabTwoScreen";
+import {
+  RootStackParamList,
+  RootTabParamList,
+  RootTabScreenProps,
+} from "../types";
+import LinkingConfiguration from "./LinkingConfiguration";
+import { Ionicons, Entypo, FontAwesome5 } from "@expo/vector-icons";
+import SinglePage from "../components/SinglePage/SinglePage";
 
-
-
-export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
+export default function Navigation({
+  colorScheme,
+}: {
+  colorScheme: ColorSchemeName;
+}) {
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
@@ -49,9 +55,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
   return (
-    <Stack.Navigator
-      initialRouteName="Root"
-    >
+    <Stack.Navigator initialRouteName="Root">
       <Stack.Screen
         name="Root"
         component={BottomTabNavigator}
@@ -75,47 +79,43 @@ function RootNavigator() {
  */
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
-const getTabBarVisibility = (route : any) => {
-  const routeName = route.state
-    ? route.state.routes[route.state.index].name
-    : '';
-
-  if (routeName === 'Camera') {
-    return false;
-  }
-
-  return true;
-}
-
-
 function BottomTabNavigator() {
   const colorScheme = useColorScheme();
 
   return (
     <BottomTab.Navigator
-      initialRouteName="Camera"
+      initialRouteName="Feed"
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme].tint,
+        tabBarActiveTintColor: "#084F6D",
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          position: "absolute",
+          paddingBottom: "2%",
+          borderTopStartRadius: 40,
+          borderTopEndRadius: 40,
+          marginStart: -10,
+          marginEnd: -10,
+        },
       }}
-
     >
       <BottomTab.Screen
         name="Camera"
         component={CameraUse}
         options={({ navigation }: RootTabScreenProps<"Camera">) => ({
-          title: "Camera",
-          tabBarIcon: ({ color }) => <Ionicons name="camera-outline" size={35} color="black" />,
+          tabBarIcon: ({ color }) => (
+            <Entypo name="camera" size={50} color={color} />
+          ),
           header: () => null,
-          tabBarStyle: {display: 'none'}
-
+          tabBarStyle: { display: "none" },
         })}
       />
       <BottomTab.Screen
         name="Feed"
         component={App}
         options={{
-          title: "Feed",
-          tabBarIcon: ({ color }) => <Ionicons name="ios-home-outline" size={35} color="black" />,
+          tabBarIcon: ({ color }) => (
+            <Entypo name="home" size={50} color={color} />
+          ),
           header: () => null,
         }}
       />
@@ -123,8 +123,19 @@ function BottomTabNavigator() {
         name="Profile"
         component={Profile}
         options={{
-          title: "Profile",
-          tabBarIcon: ({ color }) => <FontAwesome5 name="user-circle" size={35} color="black" />,
+          tabBarIcon: ({ color }) => (
+            <FontAwesome5 name="user-circle" size={50} color={color} />
+          ),
+          header: () => null,
+        }}
+      />
+      <BottomTab.Screen
+        name="SinglePage"
+        component={SinglePage}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <FontAwesome5 name="user-circle" size={50} color={color} />
+          ),
           header: () => null,
         }}
       />

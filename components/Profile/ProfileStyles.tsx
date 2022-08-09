@@ -67,17 +67,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 35,
   },
-  // collection start
-  myCollectionContainer: {
-    flex: 1,
-    backgroundColor: "red",
-    flexDirection: "row",
-    flexWrap: "wrap",
-  },
-  // imgSize: {
-  //   height: 50,
-  //   width: 50
-  // }
 });
 
 export { styles };

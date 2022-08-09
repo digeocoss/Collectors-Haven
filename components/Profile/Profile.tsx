@@ -17,7 +17,6 @@ export default function Profile({ navigation }: RootTabScreenProps<"Profile">) {
     return (
       <View
         style={{
-          backgroundColor: "blue",
           borderRadius: 10,
           overflow: "hidden",
           maxWidth: 175,
@@ -31,9 +30,11 @@ export default function Profile({ navigation }: RootTabScreenProps<"Profile">) {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: "#084F6D" }}>
+    <View style={{ flex: 1, backgroundColor: "#084F6D", paddingBottom: 80 }}>
       <FlatList
-        columnWrapperStyle={{ justifyContent: "space-evenly" }}
+        columnWrapperStyle={{
+          justifyContent: "space-evenly",
+        }}
         ListHeaderComponent={() => (
           <View style={{ marginTop: 15, marginBottom: 15 }}>
             <View style={styles.iconHeader}>

@@ -17,8 +17,7 @@ import { TouchableOpacity } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { RootTabScreenProps } from "../../types";
-
-const { width: winWidth, height: winHeight } = Dimensions.get("window");
+import { styles } from "./CameraStyles";
 
 export default function CameraUse({
   navigation,
@@ -83,41 +82,20 @@ export default function CameraUse({
                 navigation.navigate("Camera");
               }}
             >
-              {/* <Ionicons name="flash-outline" size={50} color="white" /> */}
-              <Text style={{ color: "white", fontSize: 21 }}> retake </Text>
+              <Text style={{ color: "white", fontSize: 20, paddingTop: 25 }}>
+                Retake
+              </Text>
             </TouchableOpacity>
-            <View style={styles.optionsContainer}>
-              <View style={styles.optionItems}>
-                <TouchableOpacity
-                  style={styles.switchCam}
-                  activeOpacity={0.5}
-                  onPress={TakePicture}
-                >
-                  <Ionicons
-                    name="md-camera-reverse-outline"
-                    size={55}
-                    color="white"
-                  />
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={styles.antiFlash}
-                  activeOpacity={0.5}
-                  onPress={TakePicture}
-                >
-                  <Ionicons name="flash-off-outline" size={50} color="white" />
-                </TouchableOpacity>
-              </View>
-            </View>
           </View>
         </View>
 
         <View style={styles.bottomToolbar}>
           <TouchableOpacity
-            style={styles.circleButton}
+            style={styles.postButton}
             activeOpacity={0.5}
-            onPress={TakePicture}
+            onPress={() => console.log("create route where this should go")}
           >
-            <Entypo name="circle" size={100} color="white" />
+            <Text style={styles.postButtonText}>Post</Text>
           </TouchableOpacity>
         </View>
       </SafeAreaView>
@@ -136,7 +114,6 @@ export default function CameraUse({
               navigation.navigate("Feed");
             }}
           >
-            {/* <Ionicons name="flash-outline" size={50} color="white" /> */}
             <Text style={{ color: "white", fontSize: 21 }}> Cancel </Text>
           </TouchableOpacity>
           <View style={styles.optionsContainer}>
@@ -176,79 +153,3 @@ export default function CameraUse({
     </Camera>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  buttonContainer: {
-    BackgroundColor: "#fff",
-    alingSelf: "flex-end",
-    color: "red",
-  },
-  preview: {
-    height: winHeight,
-    width: winWidth,
-    position: "absolute",
-    left: 0,
-    top: 0,
-    right: 0,
-    bottom: 0,
-  },
-  TextStyle: {
-    color: "white",
-  },
-  circleButton: {
-    textAlign: "center",
-  },
-  topSet: {
-    padding: "4%",
-    backgroundColor: "rgba(0, 0, 0, 0.8)",
-    width: 400,
-    height: 120,
-    marginBottom: 525,
-    //  marginTop: 150,
-    flexDirection: "row",
-  },
-  cancel: {
-    alignItems: "center",
-  },
-  toolBarOptContainer: {
-    alignItems: "center",
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-  optionItems: { flexDirection: "row", justifyContent: "space-between" },
-  switchCam: {},
-  antiFlash: {},
-  topToolbar: {
-    backgroundColor: "rgba(0, 0, 0, 0.8)",
-    top: 0,
-    width: winWidth,
-    position: "absolute",
-    paddingTop: 40,
-  },
-  bottomToolbar: {
-    backgroundColor: "rgba(0, 0, 0, 0.8)",
-    flexDirection: "row",
-    justifyContent: "center",
-    width: winWidth,
-    position: "absolute",
-    bottom: 0,
-    padding: 20,
-    paddingBottom: 40,
-  },
-  postButton: {
-    color: "white",
-    backgroundColor: "red",
-    alignSelf: "center",
-    fontSize: 40,
-    paddingRight: 20,
-    paddingLeft: 20,
-  },
-  optionsContainer: {},
-  postViewContainer: {
-    flex: 1,
-  },
-});
-// {/* <Ionicons name="flash-outline" size={50} color="white" /> */}
