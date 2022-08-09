@@ -22,9 +22,9 @@ const App = ({ navigation }: RootTabScreenProps<"Feed">) => {
   const renderItem = (item: any) => {
     return (
       <View key={item.id}>
-        {/* <TouchableOpacity onPress={navigation.navigate("SinglePage")}> */}
+        <TouchableOpacity onPress={() => navigation.navigate("SinglePage")}>
         <Image style={styles.imageitem} source={item.img} />
-        {/* </TouchableOpacity> */}
+        </TouchableOpacity>
       </View>
     );
   };
@@ -79,7 +79,7 @@ const App = ({ navigation }: RootTabScreenProps<"Feed">) => {
 
       <View style={styles.featuredCollections}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {filterData(CollectibleData).map((item) => renderItem(item))}
+            {filterData(CollectibleData).map((item) => renderItem(item))}
         </ScrollView>
       </View>
       <View style={styles.sortContainer}>

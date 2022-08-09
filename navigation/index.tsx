@@ -31,6 +31,7 @@ import {
 import LinkingConfiguration from "./LinkingConfiguration";
 import { Ionicons, Entypo, FontAwesome5 } from "@expo/vector-icons";
 import SinglePage from "../components/SinglePage/SinglePage";
+import Post from "../components/Post/Post";
 
 export default function Navigation({
   colorScheme,
@@ -69,6 +70,18 @@ function RootNavigator() {
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Group>
+
+      <Stack.Screen
+        name="Post"
+        component={Post}
+        options={{ header: () => null }}
+      />
+
+      <Stack.Screen
+        name="SinglePage"
+        component={SinglePage}
+        options={{ header: () => null }}
+      />
     </Stack.Navigator>
   );
 }
@@ -122,16 +135,6 @@ function BottomTabNavigator() {
       <BottomTab.Screen
         name="Profile"
         component={Profile}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <FontAwesome5 name="user-circle" size={50} color={color} />
-          ),
-          header: () => null,
-        }}
-      />
-      <BottomTab.Screen
-        name="SinglePage"
-        component={SinglePage}
         options={{
           tabBarIcon: ({ color }) => (
             <FontAwesome5 name="user-circle" size={50} color={color} />

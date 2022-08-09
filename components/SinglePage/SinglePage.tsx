@@ -1,12 +1,20 @@
 import { View, Text, Pressable, Image, FlatList } from "react-native";
-import { styles } from "./SinglePageStyle.tsx";
+import { styles } from "./SinglePageStyle";
 import { ExampleProfile } from "../../Data/Profile_Data";
 import BottomSheet from "@gorhom/bottom-sheet";
 import { useRef, useMemo, useCallback } from "react";
 import { AntDesign } from "@expo/vector-icons";
 import { CollectibleData } from "../../Data/FakeCollections.js";
+import {
+  RootStackParamList,
+  RootStackScreenProps,
+  RootTabParamList,
+  RootTabScreenProps,
+} from "../../types";
 
-export default function SinglePage() {
+export default function SinglePage({
+  navigation,
+}: RootStackScreenProps<"SinglePage">) {
   const bottomSheetRef = useRef(BottomSheet);
 
   const snapPoints = useMemo(() => ["1%", "75%"], []);
