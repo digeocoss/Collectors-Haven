@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { RootStackScreenProps, RootTabScreenProps } from "../../types";
 import { styles } from "./PostStyles";
-import { Ionicons, AntDesign } from "@expo/vector-icons";
+import { AntDesign, Ionicons } from "@expo/vector-icons";
 import PostForm from "./PostForm";
 
 export default function Post({

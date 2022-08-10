@@ -1,14 +1,26 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#084F6D",
+  },
+  backIcon: {
+    marginTop: 60,
+    alignSelf: "flex-start",
+  },
+  pictureContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+  },
   tradeHeader: {
-    margin: 30
+    margin: 30,
   },
   tradeContainer: {
     overflow: "hidden",
     alignItems: "center",
     paddingTop: 10,
-    paddingBottom: 140
+    paddingBottom: 140,
   },
   yourCollection: {
     fontSize: 25,
@@ -29,14 +41,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 20,
   },
-  container: {
-    flex: 1,
-    backgroundColor: "#084F6D",
-    paddingLeft: "7%",
-  },
-  TradeThingContainer: {
-    marginTop: "10%",
-  },
+  TradeThingContainer: {},
   tradeThing: {
     width: 180,
     height: 180,
@@ -45,9 +50,8 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 10,
   },
-  ooo: {
-    marginLeft: 76,
-    color: "white",
+  profileContentContainer: {
+    paddingLeft: "5%",
   },
   profileContainer: {
     flexDirection: "row",
@@ -67,7 +71,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   arowwsty: {
-    marginTop: 80,
+    marginTop: 85,
     marginLeft: 80,
   },
   userRating: {
@@ -99,18 +103,43 @@ const styles = StyleSheet.create({
     borderRadius: 200,
     marginRight: 10,
     marginLeft: 30,
+    width: 150,
+    height: 50,
+    alignContent: "center",
+    justifyContent: "center",
   },
   buyBut: {
     backgroundColor: "white",
     borderRadius: 200,
-    marginRight: 50,
+
+    width: 150,
+    height: 50,
   },
   buyTradeBut: {
     backgroundColor: "white",
     borderRadius: 200,
-    marginRight: 100,
-    marginLeft: 100,
-    marginTop: 50,
+    marginRight: 10,
+    marginLeft: 30,
+    marginTop: 30,
+    width: 200,
+    height: 50,
+    alignContent: "center",
+    justifyContent: "center",
+  },
+  buttonContainer: {
+    alignItems: "center",
+    marginTop: "5%",
+  },
+  buyTradeButtonsContainer: {
+    flexDirection: "row",
+  },
+  worthConditionContainer: { marginLeft: "5%", marginTop: 20 },
+  condition: {},
+  worth: {},
+  conditionIcon: {
+    flexDirection: "row",
+    marginTop: 10,
+    marginBottom: 10,
   },
 });
 

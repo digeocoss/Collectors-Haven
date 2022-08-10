@@ -6,8 +6,7 @@ import { styles } from "./PostStyles";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { TouchableHighlight } from "@gorhom/bottom-sheet";
 
-export default function PostForm(props: any) {
-  console.log(props.image);
+export default function PostForm({ navigation }, props: any) {
   const initialValues: IForm = {
     estimatedValue: "",
     title: "",
@@ -23,6 +22,7 @@ export default function PostForm(props: any) {
           onSubmit={(values, { resetForm }) => {
             console.log(values);
             resetForm({ values: initialValues });
+            navigation.navigate("ConfirmationPage");
           }}
         >
           {({ handleChange, handleBlur, handleSubmit, values }) => (
@@ -66,7 +66,6 @@ export default function PostForm(props: any) {
                   </Text>
                 </View>
               </TouchableHighlight>
-              {/* <Button onPress={handleSubmit} title="Submit" /> */}
             </View>
           )}
         </Formik>

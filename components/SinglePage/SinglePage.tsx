@@ -1,9 +1,16 @@
-import { View, Text, Pressable, Image, FlatList } from "react-native";
+import {
+  View,
+  Text,
+  Pressable,
+  Image,
+  FlatList,
+  TouchableOpacity,
+} from "react-native";
 import { styles } from "./SinglePageStyle";
 import { ExampleProfile } from "../../Data/Profile_Data";
 import BottomSheet from "@gorhom/bottom-sheet";
 import { useRef, useMemo, useCallback } from "react";
-import { AntDesign } from "@expo/vector-icons";
+import { AntDesign, Ionicons } from "@expo/vector-icons";
 import { CollectibleData } from "../../Data/FakeCollections.js";
 import {
   RootStackParamList,
@@ -79,9 +86,18 @@ export default function SinglePage({
       </View>
     </BottomSheet>
   );
+
   return (
     <View style={styles.container}>
-      <View style={styles.arowAli}>
+      <TouchableOpacity
+        style={styles.backIcon}
+        onPress={() => {
+          navigation.goBack();
+        }}
+      >
+        <Ionicons name="ios-chevron-back" size={40} color="white" />
+      </TouchableOpacity>
+      <View style={styles.pictureContainer}>
         <View style={styles.TradeThingContainer}>
           <Image
             style={styles.tradeThing}
@@ -98,8 +114,7 @@ export default function SinglePage({
           <AntDesign name="rightcircle" size={40} color="white" />
         </View>
       </View>
-      <Text style={styles.ooo}>ooo</Text>
-      <View>
+      <View style={styles.profileContentContainer}>
         <View style={styles.profileContainer}>
           <View style={styles.pfpImageContainer}>
             <Image
@@ -115,20 +130,51 @@ export default function SinglePage({
         <Text style={styles.itemTitle}>ChainSaw Man Vol.1 manga book</Text>
         <Text style={styles.itemDis}>Fresh from barns and noble</Text>
       </View>
-      <View style={styles.space}>
-        <Pressable style={styles.tradeBut} onPress={() => open()}>
-          <Text style={{ fontSize: 30 }}> Trade </Text>
-        </Pressable>
-        <Pressable style={styles.tradeBut} onPress={() => open()}>
-          <Text style={{ fontSize: 30 }}> Buy </Text>
-        </Pressable>
+      <View style={styles.worthConditionContainer}>
+        <View style={styles.condition}>
+          <Text style={{ fontSize: 20, fontWeight: "bold", color: "#fff" }}>
+            Condition
+          </Text>
+          <View style={styles.conditionIcon}>
+            <AntDesign name="checkcircleo" size={30} color="white" />
+            <Text style={{ color: "#fff", fontSize: 25, marginLeft: 10 }}>
+              Very Good
+            </Text>
+          </View>
+        </View>
+        <View style={styles.worth}>
+          <Text style={{ fontSize: 20, fontWeight: "bold", color: "#fff" }}>
+            Estimated Worth
+          </Text>
+          <Text
+            style={{
+              fontSize: 30,
+              color: "#fff",
+              marginTop: 10,
+              marginBottom: 10,
+            }}
+          >
+            $ 50.00
+          </Text>
+        </View>
       </View>
-      <Pressable style={styles.buyTradeBut} onPress={() => open()}>
-        <Text style={{ fontSize: 30, marginLeft: 5, marginRight: 2 }}>
-          Trade & Buy
-        </Text>
-      </Pressable>
-
+      <View style={styles.buttonContainer}>
+        <View style={styles.buyTradeButtonsContainer}>
+          <Pressable style={styles.tradeBut} onPress={() => open()}>
+            <Text style={{ fontSize: 30, textAlign: "center" }}> Trade </Text>
+          </Pressable>
+          <Pressable style={styles.tradeBut} onPress={() => open()}>
+            <Text style={{ fontSize: 30, textAlign: "center" }}> Buy </Text>
+          </Pressable>
+        </View>
+        <View>
+          <Pressable style={styles.buyTradeBut} onPress={() => open()}>
+            <Text style={{ fontSize: 30, textAlign: "center" }}>
+              Trade & Buy
+            </Text>
+          </Pressable>
+        </View>
+      </View>
       {bottomSheet()}
     </View>
   );
