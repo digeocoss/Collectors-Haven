@@ -11,10 +11,20 @@ import { styles } from "./ConfirmationStyles";
 
 export default function Confirmation({
   navigation,
+  route,
 }: RootStackScreenProps<"ConfirmationPage">) {
+  const submission: any = route.params;
+
   return (
     <View style={styles.container}>
-      <Text>Hello from Confirmation</Text>;
+      <View >
+        <View >
+          <Image
+            source={{ uri: submission.data.img }}
+            style={{ height: 176, width: 178, borderRadius: 10 }}
+          />
+        </View>
+      </View>
     </View>
   );
 }

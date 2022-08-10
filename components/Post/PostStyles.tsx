@@ -72,6 +72,7 @@ export const styles = StyleSheet.create({
     borderColor: "#fff",
     padding: 20,
     marginBottom: 15,
+    borderRadius: 4
   },
   formFieldTitle: {
     backgroundColor: "transparent",
@@ -82,6 +83,7 @@ export const styles = StyleSheet.create({
     borderColor: "#fff",
     padding: 10,
     marginBottom: 20,
+    borderRadius: 4
   },
   formFieldDescription: {
     backgroundColor: "transparent",
@@ -91,6 +93,7 @@ export const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "#fff",
     padding: 10,
+    borderRadius: 4
   },
   submitButton: {
     position: "absolute",
@@ -98,9 +101,23 @@ export const styles = StyleSheet.create({
     textAlign: "center",
     backgroundColor: "#fff",
     alignSelf: "center",
-    marginTop: "20%",
+    marginTop: 55,
     borderWidth: 3,
     borderRadius: 30,
     padding: 15,
+  },
+  inputContainer: {
+    flexDirection: "column",
+    marginTop: 18
+  },
+  labelContainer: {
+    backgroundColor: "#084F6D",
+    position: 'absolute',
+    left: 10,
+    top: -9,
+    zIndex: 2
+  },
+  label: {
+    color: '#fff',
   },
 });

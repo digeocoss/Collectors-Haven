@@ -32,6 +32,7 @@ import LinkingConfiguration from "./LinkingConfiguration";
 import { Ionicons, Entypo, FontAwesome5 } from "@expo/vector-icons";
 import SinglePage from "../components/SinglePage/SinglePage";
 import Post from "../components/Post/Post";
+import Confirmation from "../components/Confirmation Screen/Confirmation";
 
 export default function Navigation({
   colorScheme,
@@ -74,6 +75,12 @@ function RootNavigator() {
       <Stack.Screen
         name="Post"
         component={Post}
+        options={{ header: () => null }}
+      />
+
+      <Stack.Screen
+        name="ConfirmationPage"
+        component={Confirmation}
         options={{ header: () => null }}
       />
 
