@@ -1,75 +1,75 @@
 import React, { useState } from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-  TextInput,
-  Button,
-  Alert,
-  TextInputComponent,
-} from "react-native";
-import { useForm, Controller, SubmitErrorHandler } from "react-hook-form";
+import { Text, View, TextInput, Button, Touchable } from "react-native";
+import { Form, Formik } from "formik";
 import { IForm } from "../../constants/interfaces/form.interface";
+import { styles } from "./PostStyles";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { TouchableHighlight } from "@gorhom/bottom-sheet";
 
-export default function PostForm() {
-  const [formFields, setFormFields] = useState<IForm>({
-    estimatedValue: 0,
+export default function PostForm(props: any) {
+  console.log(props.image);
+  const initialValues: IForm = {
+    estimatedValue: "",
     title: "",
     description: "",
-    img: null,
-  });
-
-  const { handleSubmit, control } = useForm();
-
-  const onSubmit = (data: IForm) => {
-    console.log(data);
+    img: `data:image/gif;base64,${props.image}`,
   };
-
-  //   const onError: SubmitErrorHandler<IForm> = (errors, e) => {
-  //     return console.log(errors)
-  //   }
 
   return (
     <View>
-      <Text>Hello from PostForm.tsx</Text>
       <View>
-        <Controller
-          control={control}
-          render={({ field: { onChange, onBlur } }) => (
-            <TextInput
-              value={`${formFields.estimatedValue}`}
-              onBlur={onBlur}
-              onChangeText={(value) => onChange(value)}
-            />
+        <Formik
+          initialValues={initialValues}
+          onSubmit={(values, { resetForm }) => {
+            console.log(values);
+            resetForm({ values: initialValues });
+          }}
+        >
+          {({ handleChange, handleBlur, handleSubmit, values }) => (
+            <View>
+              <TextInput
+                style={styles.formFieldEstimatedWorth}
+                onChangeText={handleChange("estimatedValue")}
+                onBlur={handleBlur("estimatedValue")}
+                value={values.estimatedValue}
+                placeholder={"0.00"}
+                placeholderTextColor={"#d3d3d3"}
+              />
+              <TextInput
+                style={styles.formFieldTitle}
+                onChangeText={handleChange("title")}
+                onBlur={handleBlur("title")}
+                value={values.title}
+                placeholder={"Title"}
+                placeholderTextColor={"#d3d3d3"}
+              />
+              <TextInput
+                style={styles.formFieldDescription}
+                onChangeText={handleChange("description")}
+                onBlur={handleBlur("description")}
+                value={values.description}
+                multiline={true}
+                placeholder={"Description"}
+                placeholderTextColor={"#d3d3d3"}
+              />
+
+              <TouchableHighlight onPress={handleSubmit} underlayColor="white">
+                <View style={styles.submitButton}>
+                  <Text
+                    style={{
+                      textAlign: "center",
+                      color: "black",
+                      fontSize: 25,
+                    }}
+                  >
+                    Submit
+                  </Text>
+                </View>
+              </TouchableHighlight>
+              {/* <Button onPress={handleSubmit} title="Submit" /> */}
+            </View>
           )}
-          name="email"
-          rules={{ required: true }}
-        />
-        <Controller
-          control={control}
-          render={({ field: { onChange, onBlur } }) => (
-            <TextInput
-              value={formFields.title}
-              onBlur={onBlur}
-              onChangeText={(value) => onChange(value)}
-            />
-          )}
-          name="email"
-          rules={{ required: true }}
-        />
-        <Controller
-          control={control}
-          render={({ field: { onChange, onBlur } }) => (
-            <TextInput
-              value={formFields.description}
-              onBlur={onBlur}
-              onChangeText={(value) => onChange(value)}
-            />
-          )}
-          name="email"
-          rules={{ required: true }}
-        />
-        <Button title="Button" onPress={handleSubmit(onSubmit)} />
+        </Formik>
       </View>
     </View>
   );
