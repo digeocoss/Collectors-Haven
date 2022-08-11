@@ -108,10 +108,10 @@ export default function SinglePage({
           <AntDesign
             style={{ marginBottom: 40 }}
             name="leftcircle"
-            size={40}
+            size={50}
             color="white"
           />
-          <AntDesign name="rightcircle" size={40} color="white" />
+          <AntDesign name="rightcircle" size={50} color="white" />
         </View>
       </View>
       <View style={styles.profileContentContainer}>
@@ -136,8 +136,8 @@ export default function SinglePage({
             Condition
           </Text>
           <View style={styles.conditionIcon}>
-            <AntDesign name="checkcircleo" size={30} color="white" />
-            <Text style={{ color: "#fff", fontSize: 25, marginLeft: 10 }}>
+            <AntDesign name="checkcircleo" size={30} color="#3BB947" />
+            <Text style={{ color: "#3BB947", fontSize: 25, marginLeft: 10 }}>
               Very Good
             </Text>
           </View>
@@ -160,19 +160,23 @@ export default function SinglePage({
       </View>
       <View style={styles.buttonContainer}>
         <View style={styles.buyTradeButtonsContainer}>
-          <Pressable style={styles.tradeBut} onPress={() => open()}>
-            <Text style={{ fontSize: 30, textAlign: "center" }}> Trade </Text>
-          </Pressable>
-          <Pressable style={styles.tradeBut} onPress={() => open()}>
-            <Text style={{ fontSize: 30, textAlign: "center" }}> Buy </Text>
-          </Pressable>
-        </View>
-        <View>
-          <Pressable style={styles.buyTradeBut} onPress={() => open()}>
-            <Text style={{ fontSize: 30, textAlign: "center" }}>
-              Trade & Buy
-            </Text>
-          </Pressable>
+          <View style={styles.pressableOne}>
+            <Pressable style={styles.tradeBut} onPress={() => open()}>
+              <Text style={{ fontSize: 25, textAlign: "center" }}> Trade </Text>
+            </Pressable>
+          </View>
+          <View style={styles.pressableTwo}>
+            <Pressable
+              style={styles.tradeBut}
+              onPress={() => {
+                navigation.navigate("MakeNFT");
+              }}
+            >
+              <Text style={{ fontSize: 25, textAlign: "center" }}>
+                Mint NFT
+              </Text>
+            </Pressable>
+          </View>
         </View>
       </View>
       {bottomSheet()}

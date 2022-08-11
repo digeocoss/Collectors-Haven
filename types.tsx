@@ -23,6 +23,7 @@ export type RootStackParamList = {
   Post: undefined;
   SinglePage: undefined;
   ConfirmationPage: undefined;
+  MakeNFT: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> =

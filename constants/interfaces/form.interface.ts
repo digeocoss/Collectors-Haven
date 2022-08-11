@@ -6,3 +6,10 @@ export interface IForm {
   description: string;
   img: string;
 }
+
+export interface INFTForm {
+  yearBought: string;
+  collectibleName: string;
+  serialNumber: string;
+  otherInformation: string;
+}

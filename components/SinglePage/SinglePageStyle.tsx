@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   },
   pictureContainer: {
     flexDirection: "row",
-    justifyContent: "center",
+    justifyContent: "space-between",
   },
   tradeHeader: {
     margin: 30,
@@ -41,10 +41,12 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 20,
   },
-  TradeThingContainer: {},
+  TradeThingContainer: {
+    marginLeft: "5%",
+  },
   tradeThing: {
-    width: 180,
-    height: 180,
+    width: 230,
+    height: 230,
     borderRadius: 20,
     overflow: "hidden",
     marginTop: 20,
@@ -71,8 +73,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   arowwsty: {
-    marginTop: 85,
-    marginLeft: 80,
+    justifyContent: "center",
+    marginHorizontal: 30,
+    marginRight: "15%",
   },
   userRating: {
     marginTop: 27,
@@ -101,8 +104,6 @@ const styles = StyleSheet.create({
   tradeBut: {
     backgroundColor: "white",
     borderRadius: 200,
-    marginRight: 10,
-    marginLeft: 30,
     width: 150,
     height: 50,
     alignContent: "center",
@@ -136,6 +137,12 @@ const styles = StyleSheet.create({
   worthConditionContainer: { marginLeft: "5%", marginTop: 20 },
   condition: {},
   worth: {},
+  pressableOne: {
+    marginHorizontal: 10,
+  },
+  pressableTwo: {
+    marginHorizontal: 10,
+  },
   conditionIcon: {
     flexDirection: "row",
     marginTop: 10,

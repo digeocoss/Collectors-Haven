@@ -31,6 +31,7 @@ import {
 import LinkingConfiguration from "./LinkingConfiguration";
 import { Ionicons, Entypo, FontAwesome5 } from "@expo/vector-icons";
 import SinglePage from "../components/SinglePage/SinglePage";
+import MakeNFT from "../components/NFTscreen/MakeNFT";
 import Post from "../components/Post/Post";
 import Confirmation from "../components/Confirmation Screen/Confirmation";
 
@@ -87,6 +88,12 @@ function RootNavigator() {
       <Stack.Screen
         name="SinglePage"
         component={SinglePage}
+        options={{ header: () => null }}
+      />
+
+      <Stack.Screen
+        name="MakeNFT"
+        component={MakeNFT}
         options={{ header: () => null }}
       />
     </Stack.Navigator>
