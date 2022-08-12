@@ -22,10 +22,10 @@ import { styles } from "./CameraStyles";
 export default function CameraUse({
   navigation,
 }: RootTabScreenProps<"Camera">) {
-  let cameraRef = useRef<Camera>(null);
+  let cameraRef = useRef();
   const [AllowCamera, setAllowCamera] = useState();
   const [AllowMedia, setAllowMedia] = useState();
-  const [photo, setPhoto] = useState<string|null>();
+  const [photo, setPhoto] = useState();
 
   useEffect(() => {
     (async () => {
@@ -49,10 +49,8 @@ export default function CameraUse({
       exif: false,
     };
 
-    if(cameraRef && cameraRef.current){
-      let newPhoto = await cameraRef.current.takePictureAsync(options);
-      setPhoto(newPhoto.base64 ? newPhoto.base64: null);
-    }
+    let newPhoto = await cameraRef.current.takePictureAsync(options);
+    setPhoto(newPhoto);
   };
 
   if (photo) {
@@ -97,7 +95,7 @@ export default function CameraUse({
             activeOpacity={0.5}
             onPress={() => {
               console.log("tap");
-              navigation.navigate("Post", {photo: photo});
+              navigation.navigate("Post", { photo: photo });
             }}
           >
             <Text style={styles.postButtonText}>Post</Text>

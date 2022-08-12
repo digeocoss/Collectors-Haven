@@ -6,7 +6,7 @@ import {
   FlatList,
   TouchableOpacity,
 } from "react-native";
-import { styles } from "./SinglePageStyle";
+import { styles } from "./TradeTempStyle";
 import { ExampleProfile } from "../../Data/Profile_Data";
 import BottomSheet from "@gorhom/bottom-sheet";
 import { useRef, useMemo, useCallback } from "react";
@@ -19,9 +19,9 @@ import {
   RootTabScreenProps,
 } from "../../types";
 
-export default function SinglePage({
+export default function TradeTemp({
   navigation,
-}: RootStackScreenProps<"SinglePage">) {
+}: RootStackScreenProps<"TradeTemp">) {
   const bottomSheetRef = useRef(BottomSheet);
 
   const snapPoints = useMemo(() => ["1%", "75%"], []);
@@ -169,12 +169,10 @@ export default function SinglePage({
             <Pressable
               style={styles.tradeBut}
               onPress={() => {
-                navigation.navigate("MakeNFT");
+                open();
               }}
             >
-              <Text style={{ fontSize: 25, textAlign: "center" }}>
-                Mint NFT
-              </Text>
+              <Text style={{ fontSize: 25, textAlign: "center" }}>Buy</Text>
             </Pressable>
           </View>
         </View>
