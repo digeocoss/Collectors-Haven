@@ -182,7 +182,7 @@ export default function MakeNFT({
         <TouchableOpacity
           style={{ backgroundColor: "white", padding: 10, borderRadius: 10 }}
           onPress={() => {
-            navigation.navigate("Feed");
+            navigation.navigate("TradeTemp");
           }}
         >
           <Text style={{ textAlign: "center", color: "black", fontSize: 20 }}>

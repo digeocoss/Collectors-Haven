@@ -24,6 +24,7 @@ export type RootStackParamList = {
   SinglePage: undefined;
   ConfirmationPage: undefined;
   MakeNFT: undefined;
+  TradeTemp: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> =

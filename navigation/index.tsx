@@ -34,6 +34,7 @@ import SinglePage from "../components/SinglePage/SinglePage";
 import MakeNFT from "../components/NFTscreen/MakeNFT";
 import Post from "../components/Post/Post";
 import Confirmation from "../components/Confirmation Screen/Confirmation";
+import TradeTemp from "../components/TradePageTemp/TradeTemp";
 
 export default function Navigation({
   colorScheme,
@@ -94,6 +95,12 @@ function RootNavigator() {
       <Stack.Screen
         name="MakeNFT"
         component={MakeNFT}
+        options={{ header: () => null }}
+      />
+
+      <Stack.Screen
+        name="TradeTemp"
+        component={TradeTemp}
         options={{ header: () => null }}
       />
     </Stack.Navigator>
